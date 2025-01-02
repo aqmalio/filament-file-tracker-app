@@ -19,16 +19,18 @@ class DesaResource extends Resource
     protected static ?string $label = "Desa";
     protected static ?string $navigationLabel = "Desa";
     protected static ?string $navigationGroup = "Data Master";
-    protected static ?int $navigationSort = 2;
-
-
+    protected static ?int $navigationSort = 3;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $slug = 'desa';
+    protected static ?string $pluralModelLabel = 'desa';
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')->required(),
             ]);
     }
 
@@ -36,18 +38,17 @@ class DesaResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateNotaris extends CreateRecord
 {
     protected static string $resource = NotarisResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl('index');
+    }
 }

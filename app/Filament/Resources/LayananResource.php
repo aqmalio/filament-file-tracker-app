@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\NotarisResource\Pages;
-use App\Filament\Resources\NotarisResource\RelationManagers;
-use App\Models\Notaris;
+use App\Filament\Resources\LayananResource\Pages;
+use App\Filament\Resources\LayananResource\RelationManagers;
+use App\Models\Layanan;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,23 +13,32 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class NotarisResource extends Resource
+class LayananResource extends Resource
 {
-    protected static ?string $model = Notaris::class;
-    protected static ?string $label = "Notaris";
-    protected static ?string $navigationLabel = "Notaris";
+    protected static ?string $model = Layanan::class;
+    protected static ?string $label = "Layanan";
+    protected static ?string $navigationLabel = "Layanan";
     protected static ?string $navigationGroup = "Data Master";
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 1;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $recordTitleAttribute = 'name';
-    protected static ?string $slug = 'notaris';
+    protected static ?string $slug = 'layanan';
+    protected static ?string $pluralModelLabel = 'layanan';
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\TextInput::make('no_hp'),
+                Forms\Components\TextInput::make('durasi')
+                    ->numeric()
+                    ->suffix('hari')
+                    ->step(1)
+                    ->minLength(1)
+                    ->maxLength(365)
+                    ->autocomplete(false)
+                    ->required(),
             ]);
     }
 
@@ -38,7 +47,7 @@ class NotarisResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('no_hp'),
+                Tables\Columns\TextColumn::make('durasi'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -66,9 +75,9 @@ class NotarisResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNotaris::route('/'),
-            'create' => Pages\CreateNotaris::route('/create'),
-            'edit' => Pages\EditNotaris::route('/{record}/edit'),
+            'index' => Pages\ListLayanans::route('/'),
+            'create' => Pages\CreateLayanan::route('/create'),
+            'edit' => Pages\EditLayanan::route('/{record}/edit'),
         ];
     }
 
