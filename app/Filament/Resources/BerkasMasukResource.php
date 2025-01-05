@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use App\Models\Desa;
 use App\Models\Layanan;
 use App\Models\Notaris;
+use Filament\Support\Colors\Color;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -50,7 +51,7 @@ class BerkasMasukResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')->label('Tanggal Daftar')->date('d/m/Y'),
-                Tables\Columns\TextColumn::make('nomor')->label('Nomor Berkas/Tahun')->searchable(),
+                Tables\Columns\TextColumn::make('nomor')->color(Color::Blue)->label('Nomor Berkas/Tahun')->searchable(),
                 Tables\Columns\TextColumn::make('nama_pemohon')->searchable(),
                 Tables\Columns\TextColumn::make('notaris.name')->label('Nama Kuasa'),
                 Tables\Columns\TextColumn::make('notaris.no_hp')->label('No HP'),
@@ -59,7 +60,8 @@ class BerkasMasukResource extends Resource
                 Tables\Columns\TextColumn::make('nomor_hak'),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('notaris_id')
+                    ->options(Notaris::get()->pluck('name','id'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
