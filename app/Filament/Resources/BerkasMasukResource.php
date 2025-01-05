@@ -23,7 +23,7 @@ class BerkasMasukResource extends Resource
     protected static ?string $navigationLabel = "Berkas Masuk";
     protected static ?string $navigationGroup = "Loket";
     protected static ?int $navigationSort = 5;
-    protected static ?string $navigationIcon = 'heroicon-o-archive-box-arrow-down';
+    protected static ?string $navigationIcon = 'heroicon-s-document-arrow-down';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $slug = 'berkas-masuk';
     protected static ?string $pluralModelLabel = 'Berkas Masuk';
