@@ -20,7 +20,7 @@ class DesaResource extends Resource
     protected static ?string $navigationLabel = "Desa";
     protected static ?string $navigationGroup = "Data Master";
     protected static ?int $navigationSort = 3;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-c-globe-asia-australia';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $slug = 'desa';
     protected static ?string $pluralModelLabel = 'desa';

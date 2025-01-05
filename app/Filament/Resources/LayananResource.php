@@ -20,7 +20,7 @@ class LayananResource extends Resource
     protected static ?string $navigationLabel = "Layanan";
     protected static ?string $navigationGroup = "Data Master";
     protected static ?int $navigationSort = 1;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-ticket';
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $slug = 'layanan';
     protected static ?string $pluralModelLabel = 'layanan';
