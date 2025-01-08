@@ -17,6 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Widgets\JatuhTempoTable;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -37,7 +38,8 @@ class AppPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+                // Widgets\AccountWidget::class,
+                JatuhTempoTable::class
             ])
             ->favicon(asset('icon.png'))
             ->middleware([
